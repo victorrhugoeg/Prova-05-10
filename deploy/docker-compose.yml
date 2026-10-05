@@ -1,0 +1,53 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: "api-nestjs"
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: podcast
+    ports:
+      - "3000:3000"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    networks:
+      - app-network
+
+  api:
+    build:
+      context: ../api
+      dockerfile: Dockerfile
+    container_name: api-nestjs
+    restart: always
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 3000
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: podcast
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - db-net
+      - front-net
+
+  front:
+    build:
+      context: ../front
+      dockerfile: Dockerfile
+    container_name: api-nestjs
+    restart: always
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    networks:
+      - front-net
+
+volumes:
+  postgres_data:

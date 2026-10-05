@@ -1,8 +1,13 @@
 # Prova-05-10
 
 ## Sumário
+- Requisitos
 - Descrição do projeto
 - Instruções para Docker Compose Up
+
+## Requisitos
+- Docker Desktop
+- Git
 
 ## Descrição do projeto
 - Sistema de cadastro de Episódio de Podcast
