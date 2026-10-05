@@ -15,6 +15,6 @@
 ## Instruções para Docker Compose Up
 Executar comandos no terminal
 - git clone https://github.com/victorrhugoeg/Prova-05-10.git
-- cd Prova-05-10
+- cd Prova-05-10/deploy
 - docker compose up -d --build
 
