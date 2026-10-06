@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
 
-export class CreateEpisodesDto {
+export class CreateEpisodeDto {
   @IsString()
   @IsNotEmpty()
   show_name: string;
